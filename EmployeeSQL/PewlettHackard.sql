@@ -89,8 +89,3 @@ REFERENCES Department (dept_no);
 -- Add foreign key to department employees from employee table.
 ALTER TABLE DepartmentEmployees ADD CONSTRAINT fk_DepartmentEmployees_emp_no FOREIGN KEY(emp_no)
 REFERENCES Employee (emp_no);
-
-SELECT players.first_name, players.last_name, players.hand, matches.loser_rank
-FROM matches
-INNER JOIN players ON
-players.player_id=matches.loser_id;
