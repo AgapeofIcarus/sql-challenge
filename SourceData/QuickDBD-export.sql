@@ -3,56 +3,56 @@
 
 
 CREATE TABLE "Employee" (
-    "EmployeeID" int   NOT NULL,
-    "LastName" VARCHAR   NOT NULL,
-    "FirstName" VARCHAR   NOT NULL,
-    "Sex" VARCHAR   NOT NULL,
-    "HireDate" date   NOT NULL,
+    "emp_no" int   NOT NULL,
+    "last_name" VARCHAR   NOT NULL,
+    "first_name" VARCHAR   NOT NULL,
+    "sex" VARCHAR   NOT NULL,
+    "hire_date" date   NOT NULL,
     CONSTRAINT "pk_Employee" PRIMARY KEY (
-        "EmployeeID"
+        "emp_no"
      )
 );
 
 CREATE TABLE "Salaries" (
-    "EmployeeID" int   NOT NULL,
-    "Salary" money   NOT NULL
+    "emp_no" int   NOT NULL,
+    "salary" money   NOT NULL
 );
 
 CREATE TABLE "Title" (
-    "TitleID" int   NOT NULL,
-    "JobTitle" VARCHAR   NOT NULL,
+    "title_id" int   NOT NULL,
+    "title" VARCHAR   NOT NULL,
     CONSTRAINT "pk_Title" PRIMARY KEY (
-        "TitleID"
+        "title_id"
      )
 );
 
 CREATE TABLE "Department" (
-    "DepartmentID" int   NOT NULL,
-    "DepartmentName" VARCHAR   NOT NULL,
+    "dept_no" int   NOT NULL,
+    "dept_name" VARCHAR   NOT NULL,
     CONSTRAINT "pk_Department" PRIMARY KEY (
-        "DepartmentID"
+        "dept_no"
      )
 );
 
 CREATE TABLE "DepartmentManager" (
-    "DepartmentID" int   NOT NULL,
-    "EmployeeID" int   NOT NULL
+    "dept_no" int   NOT NULL,
+    "emp_no" int   NOT NULL
 );
 
 CREATE TABLE "DepartmentEmployees" (
-    "DepartmentID" int   NOT NULL,
-    "EmployeeID" int   NOT NULL
+    "dept_no" int   NOT NULL,
+    "emp_no" int   NOT NULL
 );
 
-ALTER TABLE "Salaries" ADD CONSTRAINT "fk_Salaries_EmployeeID" FOREIGN KEY("EmployeeID")
-REFERENCES "Employee" ("EmployeeID");
+ALTER TABLE "Salaries" ADD CONSTRAINT "fk_Salaries_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Employee" ("emp_no");
 
-ALTER TABLE "DepartmentManager" ADD CONSTRAINT "fk_DepartmentManager_DepartmentID" FOREIGN KEY("DepartmentID")
-REFERENCES "Department" ("DepartmentID");
+ALTER TABLE "DepartmentManager" ADD CONSTRAINT "fk_DepartmentManager_dept_no" FOREIGN KEY("dept_no")
+REFERENCES "Department" ("dept_no");
 
-ALTER TABLE "DepartmentEmployees" ADD CONSTRAINT "fk_DepartmentEmployees_DepartmentID" FOREIGN KEY("DepartmentID")
-REFERENCES "Department" ("DepartmentID");
+ALTER TABLE "DepartmentEmployees" ADD CONSTRAINT "fk_DepartmentEmployees_dept_no" FOREIGN KEY("dept_no")
+REFERENCES "Department" ("dept_no");
 
-ALTER TABLE "DepartmentEmployees" ADD CONSTRAINT "fk_DepartmentEmployees_EmployeeID" FOREIGN KEY("EmployeeID")
-REFERENCES "Employee" ("EmployeeID");
+ALTER TABLE "DepartmentEmployees" ADD CONSTRAINT "fk_DepartmentEmployees_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "Employee" ("emp_no");
 
