@@ -1,15 +1,27 @@
+CREATE TABLE Title (
+    title_id VARCHAR   NOT NULL,
+    title VARCHAR   NOT NULL,
+    CONSTRAINT pk_Title PRIMARY KEY (title_id)
+);
+
+COPY Title(title_id, title)
+FROM 'C:\Users\Captain\Documents\GitHub\sql-challenge\SourceData\titles.csv'
+DELIMITER ','
+CSV HEADER;
+
 CREATE TABLE Employee (
     emp_no INT NOT NULL,
-	emp_title VARCHAR NOT NULL,
+	emp_title_id VARCHAR NOT NULL,
 	birth_date DATE NOT NULL,
     first_name VARCHAR   NOT NULL,
 	last_name VARCHAR   NOT NULL,
     sex VARCHAR   NOT NULL,
     hire_date DATE   NOT NULL,
-	CONSTRAINT pk_Employee PRIMARY KEY (emp_no)
+	CONSTRAINT pk_Employee PRIMARY KEY (emp_no),
+    FOREIGN KEY (emp_title_id) REFERENCES Title(title_id)
 );
 
-COPY Employee(emp_no, emp_title, birth_date, first_name, last_name, sex, hire_date)
+COPY Employee(emp_no, emp_title_id, birth_date, first_name, last_name, sex, hire_date)
 FROM 'C:\Users\Captain\Documents\GitHub\sql-challenge\SourceData\employees.csv'
 DELIMITER ','
 CSV HEADER;
@@ -22,17 +34,6 @@ CREATE TABLE Salaries (
 
 COPY Salaries(emp_no, salary)
 FROM 'C:\Users\Captain\Documents\GitHub\sql-challenge\SourceData\salaries.csv'
-DELIMITER ','
-CSV HEADER;
-
-CREATE TABLE Title (
-    title_id VARCHAR   NOT NULL,
-    title VARCHAR   NOT NULL,
-    CONSTRAINT pk_Title PRIMARY KEY (title_id)
-);
-
-COPY Title(title_id, title)
-FROM 'C:\Users\Captain\Documents\GitHub\sql-challenge\SourceData\titles.csv'
 DELIMITER ','
 CSV HEADER;
 
