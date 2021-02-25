@@ -15,3 +15,9 @@ SELECT departmentmanager.dept_no, department.dept_name, departmentmanager.emp_no
 from departmentmanager
    inner join department on departmentmanager.dept_no = department.dept_no
    inner join employee on departmentmanager.emp_no = employee.emp_no
+   
+--Create list containing employee number, last name, first name, and department name.
+SELECT departmentemployees.emp_no, employee.last_name, employee.first_name, department.dept_name
+from employee
+   inner join departmentemployees on employee.emp_no = departmentemployees.emp_no
+   inner join department on departmentemployees.dept_no = department.dept_no
