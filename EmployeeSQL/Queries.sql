@@ -27,3 +27,11 @@ FROM employee
 SELECT employee.first_name, employee.last_name, employee.sex
 FROM employee
 WHERE employee.first_name = 'Hercules' AND employee.last_name LIKE 'B%'
+
+--Create list containing all employees in the Sales department, including their employee number, 
+--last name, first name, and department name.
+SELECT departmentemployees.emp_no, employee.last_name, employee.first_name, department.dept_name
+FROM employee
+   INNER JOIN departmentemployees ON employee.emp_no = departmentemployees.emp_no
+   INNER JOIN department ON departmentemployees.dept_no = department.dept_no
+   WHERE department.dept_no = 'd007'
