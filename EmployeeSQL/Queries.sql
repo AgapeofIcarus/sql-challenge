@@ -35,3 +35,11 @@ FROM employee
    INNER JOIN departmentemployees ON employee.emp_no = departmentemployees.emp_no
    INNER JOIN department ON departmentemployees.dept_no = department.dept_no
    WHERE department.dept_no = 'd007'
+   
+--employees in the Sales and Development departments, including their employee number, last name, 
+--first name, and department name.
+SELECT departmentemployees.emp_no, employee.last_name, employee.first_name, department.dept_name
+FROM employee
+   INNER JOIN departmentemployees ON employee.emp_no = departmentemployees.emp_no
+   INNER JOIN department ON departmentemployees.dept_no = department.dept_no
+   WHERE department.dept_no = 'd007' OR department.dept_no = 'd005'
