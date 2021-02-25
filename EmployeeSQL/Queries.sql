@@ -8,3 +8,10 @@ Employee.emp_no=Salaries.emp_no;
 SELECT first_name, last_name, hire_date
 FROM employee
 WHERE hire_date between '1986-01-01' and '1986-12-31'
+
+--Create list containing manager of each department with the following information: department number, 
+--department name, the manager's employee number, last name, first name.
+SELECT departmentmanager.dept_no, department.dept_name, departmentmanager.emp_no, employee.last_name, employee.first_name
+from departmentmanager
+   inner join department on departmentmanager.dept_no = department.dept_no
+   inner join employee on departmentmanager.emp_no = employee.emp_no
