@@ -43,3 +43,11 @@ FROM employee
    INNER JOIN departmentemployees ON employee.emp_no = departmentemployees.emp_no
    INNER JOIN department ON departmentemployees.dept_no = department.dept_no
    WHERE department.dept_no = 'd007' OR department.dept_no = 'd005'
+   
+--List frequency count of employee last names, i.e., how many employees share each last name in descending
+--order.
+SELECT employee.last_name, COUNT(employee.last_name ) AS last_name_count
+FROM employee
+GROUP BY employee.last_name
+HAVING COUNT(employee.last_name ) >1
+ORDER BY last_name_count DESC
